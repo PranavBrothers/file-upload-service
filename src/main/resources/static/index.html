@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.3.917/styles/kendo.default-v2.min.css" />
+    <script src="https://kendo.cdn.telerik.com/2019.3.917/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2019.3.917/js/kendo.all.min.js"></script>
+</head>
+<body>
+        <div id="example">
+            <div>
+                <div class="demo-section k-content">
+                    <input name="files" id="files" type="file" />
+                </div>
+            </div>
+            <script>
+               	$(document).ready(function() {
+             		$.get("async/initialFiles", function(initialFiles, status){
+             			$("#files").kendoUpload({
+                        	multiple: true,
+                            async: {
+                                saveUrl: "/async/save",
+                                removeUrl: "/async/remove",
+                                autoUpload: true
+                            },
+                            files: initialFiles 
+                        });
+             		});
+                });
+            </script>
+        </div>
+</body>
+</html>
